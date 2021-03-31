@@ -23,7 +23,7 @@ class employeeTable extends Component {
         }
       )
   }
-  filter = () => {
+  sort = () => {
     console.log("it's working")
   }
   render (){
@@ -33,7 +33,7 @@ class employeeTable extends Component {
           <thead>
             <tr>
               <th scope="col">First Name</th>
-              <th scope="col" onClick={this.filter}>Last Name</th>
+              <th scope="col" onClick={this.sort}>Last Name</th>
               <th scope="col">City</th>
               <th scope="col">County</th>
               <th scope="col">Email</th>
