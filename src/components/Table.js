@@ -6,6 +6,7 @@ class employeeTable extends Component {
     results: [],
     error: "" ,
     filter:[],
+    sorted: false,
   };
 
   componentDidMount() {
@@ -24,7 +25,29 @@ class employeeTable extends Component {
       )
   }
   sort = () => {
+    var sortedResult ;
     console.log("it's working")
+    if (this.state.sorted == false){
+          sortedResult = this.state.results.sort(function (a, b) {
+           if (a.name.last < b.name.last) {
+             return -1;
+           }
+           if (a.name.last > b.name.last) {
+             return 1;
+           }
+           return 0;
+         });
+    } else {
+      sortedResult = this.state.results.reverse((a, b) => {
+        if (a.name.last < b.name.last) return 1;
+        if (a.name.last > b.name.last) return -1;
+        return 0;
+      });
+    }
+    this.setState({
+      results: sortedResult,
+      sorted: !this.state.sorted,
+    })
   }
   render (){
     return (
