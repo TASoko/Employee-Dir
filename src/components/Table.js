@@ -8,6 +8,7 @@ class employeeTable extends Component {
     error: "" ,
     filter:[],
     sorted: false,
+    search: "",
   };
 
   componentDidMount() {
@@ -50,8 +51,13 @@ class employeeTable extends Component {
     })
   }
 
-  filter = () => {
+  filter = (event) => {
+    var searchInput = event.target.value;
     console.log("filter working")
+    const filteredResult = this.state.results.filter(employee=>
+      employee.name.first.includes(searchInput) || employee.name.last.includes(searchInput) || employee.location.country.includes(searchInput)
+    )
+    console.log(filteredResult)
   }
 
   render (){
