@@ -53,14 +53,17 @@ class employeeTable extends Component {
 
   filter = (event) => {
     var searchInput = event.target.value;
-    console.log("filter working")
     const filteredResult = this.state.results.filter(employee=>
       employee.name.first.includes(searchInput) || employee.name.last.includes(searchInput) || employee.location.country.includes(searchInput)
     )
-    console.log(filteredResult)
+    this.setState({
+      search: searchInput,
+      filter: filteredResult,
+    })
   }
 
   render (){
+    console.log(this.state.filter)
     return (
       <div className="container">
         <Search filter={this.filter} />
@@ -79,7 +82,19 @@ class employeeTable extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.results.length > 0 &&
+            {
+            this.state.filter.length > 0 ? this.state.filter.map((results) => (
+                <tr>
+                  <td>{results.name.first}</td>
+                  <td>{results.name.last}</td>
+                  <td>{results.location.city}</td>
+                  <td>{results.location.country}</td>
+                  <td>{results.email}</td>
+                  <td>{results.phone}</td>
+                  <td>{results.cell}</td>
+                </tr>
+              )) :
+            this.state.results.length > 0 &&
               this.state.results.map((results) => (
                 <tr>
                   <td>{results.name.first}</td>
