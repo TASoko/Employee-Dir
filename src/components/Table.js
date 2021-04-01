@@ -63,7 +63,6 @@ class employeeTable extends Component {
   }
 
   render (){
-    console.log(this.state.filter)
     return (
       <div className="container">
         <Search filter={this.filter} />
