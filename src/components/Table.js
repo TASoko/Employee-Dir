@@ -60,7 +60,7 @@ class employeeTable extends Component {
       search: searchInput,
       filter: filteredResult,
     })
-  }
+  } 
 
   render (){
     return (
